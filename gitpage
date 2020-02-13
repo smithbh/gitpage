@@ -1,9 +1,8 @@
 #!/bin/bash
 
 ##
-# Open git page in Safari
+# Open git page in default browser
 ##
 url=$(git config --get remote.origin.url | sed 's/git@//g;s/:/\//g;s/.git//g');
-open -a /Applications/Safari.app "https://${url}";
-
-
+branch=$(git branch | grep -e '*' | cut -d$' ' -f2);
+open "https://${url}/tree/${branch}";
