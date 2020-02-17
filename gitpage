@@ -3,6 +3,6 @@
 ##
 # Open git page in default browser
 ##
-url=$(git config --get remote.origin.url | sed 's/git@//g;s/:/\//g;s/.git//g');
+url=$(git config --get remote.origin.url | sed 's/https:\/\///g;' |  sed 's/http:\/\///g;' | sed 's/git@//g;s/:/\//g;s/\.git//g');
 branch=$(git branch | grep -e '*' | cut -d$' ' -f2);
 open "https://${url}/tree/${branch}";
